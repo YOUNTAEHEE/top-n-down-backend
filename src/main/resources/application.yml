@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000
+      max-lifetime: 2000000
+      connection-timeout: 30000
+  config:
+    import: optional:file:.env[.properties]
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO}
+    show-sql: ${JPA_SHOW_SQL}
+
+  # Additional properties, such as custom properties for your application, can go here
+
+logging:
+  level:
+    root: ${LOGGING_LEVEL_ROOT}
+    org.hibernate.SQL: ${LOGGING_LEVEL_HIBERNATE_SQL}
